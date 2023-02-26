@@ -95,8 +95,8 @@ form {
   /* this will push other blocks out of the way */
 
   /* colors */
-  background-color: #ffe08a;
-  color: #4a4a4a;
+  background-color: #f688c1;
+  color: #555fea;
 
   /* shapes */
   border-radius: 6px;
@@ -104,7 +104,7 @@ form {
   padding: 1.25rem;
   margin:0; /* removing the margin on h1 tags means the header pins to the top if we move */
 
-
+  border: 2px dashed;
   /* box-shadows are fancy */
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
@@ -301,6 +301,9 @@ form input {
     /* Rules in here will only apply when a screen is the correct size */
     /* check it out by using your developer tools to shrink your screen-size */
     .container {
-      background-color: rgba(204, 8, 162, 0.65);
+      background-color: rgba(60, 63, 248, 0.65);
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
     }
 }
