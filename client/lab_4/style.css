@@ -149,6 +149,12 @@ form {
   flex-direction: column;
 }
 
+.restaurant_list{
+  background-color: #555fea;
+  padding: 1.5rem;
+  border: 2px dashed;
+}
+
 /*
   This block is actually dependent on the "container" block having a flex set on it
   and the "wrapper" block displaying as a flex column with a "vertical height" (vh) of 100.
@@ -158,13 +164,14 @@ form {
 .footer {
   flex-shrink: 0;
   padding: 1rem;
-  background-color: rgba(0, 139, 139, 0.8);
+  background-color: #f688c1;
   font-size: 1.2rem;
   font-weight: 600;
+  border: 2px dashed;
 }
 
 .footer a {
-  color: rgba(255, 224, 138, 1);
+  color: #f688c1;
   text-decoration: underline;
 }
 
