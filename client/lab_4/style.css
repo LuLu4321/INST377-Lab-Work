@@ -165,10 +165,9 @@ form {
   flex-shrink: 0;
   padding: 1rem;
   background-color: #f688c1;
-  border-color: #f688c1;
   font-size: 1.2rem;
   font-weight: 600;
-  border: 2px dashed;
+  border: 2px dashed #f688c1;
 }
 
 .footer a {
