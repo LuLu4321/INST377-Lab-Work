@@ -167,7 +167,7 @@ form {
   background-color: #f688c1;
   font-size: 1.2rem;
   font-weight: 600;
-  border: 2px dashed #f688c1;
+  border: 2px dashed #555fea;
 }
 
 .footer a {
@@ -316,7 +316,7 @@ form input {
     /* Rules in here will only apply when a screen is the correct size */
     /* check it out by using your developer tools to shrink your screen-size */
     .container {
-      background-color: rgb(255, 255, 255);
+      background-color: #f688c1;
       flex-direction: column;
       justify-content: center;
       align-items: center;
