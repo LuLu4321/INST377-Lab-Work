@@ -283,6 +283,7 @@ div.carousel {
 .prev:hover,
 .next:hover {
   /* Pick a good background colour for your hover pseudoclass */
+  border-color:#555fea;
 }
 
 form input {
