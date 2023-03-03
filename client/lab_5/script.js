@@ -5,6 +5,8 @@
 
 async function mainEvent() { // the async keyword means we can make API requests
   const form = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
+  //let currentList = [];
+  const filterButton = document.querySelector('.filter_button');
   form.addEventListener('submit', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
     submitEvent.preventDefault(); // This prevents your page from going to http://localhost:3000/api even if your form still has an action set on it
     console.log('form submission'); // this is substituting for a "breakpoint"
@@ -50,11 +52,18 @@ async function mainEvent() { // the async keyword means we can make API requests
       This will also show you how long it takes a request to resolve
     */
 
+   //currentList = await results.json();
+    //console.table(currentList);
+
     // This changes the response from the GET into data we can use - an "object"
     const arrayFromJson = await results.json();
     console.table(arrayFromJson.data); // this is called "dot notation"
     // arrayFromJson.data - we're accessing a key called 'data' on the returned object
     // it initially contains all 1,000 records from your request
+  });
+
+  filterButton.addEventListener('click',(event) => {
+    console.log('clicked FilterButton')
   });
 }
 
