@@ -5,7 +5,7 @@
 function filterList(list, query){
   return list.filter((item) => {
     const lowerCaseName = item.name.toLowerCase();
-    const lowerCaseQuery = query.name.toLowerCase();
+    const lowerCaseQuery = query.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
   });
 
