@@ -15,7 +15,7 @@ function injectHTML(list){
   target.innerHTML='';
   list.forEach((item) => {
     const str = `<li>${item.name}</li>`;
-    target.innerHTML += str;
+    target.innerHTML += str
   })
 }
 
