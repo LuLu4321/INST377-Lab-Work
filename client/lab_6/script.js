@@ -29,13 +29,23 @@ function filterList(list, query){
 
 }
 
+function cutRestaurantList(list){
+  console.log('fired cut list');
+  const range = [...Array(15).keys()];
+  return newArray = range.map((item) => {
+    const index = getRandomIntInclusive(0, list.length-1);
+    return list[index]
+  })
+}
+
 async function mainEvent() { // the async keyword means we can make API requests
   const mainform = document.querySelector('.main_form'); // This class name needs to be set on your form before you can listen for an event on it
-  const filterButton = document.querySelector('.filter_button');
-
+  const filterDataButton = document.querySelector('#filter');
+  const loadDataButton = document.querySelector('#data_load');
+  const generateListButton = document.querySelector('#generate');
   let currentList = [];
 
-  mainform.addEventListener('submit', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
+  loadDataButton.addEventListener('click', async (submitEvent) => { // async has to be declared on every function that needs to "await" something
     submitEvent.preventDefault(); // This prevents your page from going to http://localhost:3000/api even if your form still has an action set on it
     console.log('form submission'); // this is substituting for a "breakpoint"
 
@@ -48,7 +58,7 @@ async function mainEvent() { // the async keyword means we can make API requests
    injectHTML(currentList);
   });
 
-  filterButton.addEventListener('click',(event) => {
+  filterDataButton.addEventListener('click',(event) => {
     console.log('clicked FilterButton');
 
     const formData = new FormData(mainform);
@@ -60,6 +70,13 @@ async function mainEvent() { // the async keyword means we can make API requests
     console.log(newList);
     injectHTML(newList);
   });
+
+  generateListButton.addEventListener('click', (event) => {
+    console.log('generate new list');
+    const restaurantsList = cutRestaurantList(currentList);
+    console.log(restaurantsList);
+    injectHTML(restaurantsList);
+  })
 }
 
 /*
