@@ -56,10 +56,12 @@ function getRandomIntInclusive(min, max){
       console.log('Loading Data'); 
       loadAnimation.style.display = 'inline-block';
       const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
-      
-      
-      
       storedList = await results.json();
+      
+      if (storedList.length > 0){
+        generateListButton.classList.remove('hidden');
+     }
+     
       loadAnimation.style.display = 'none';
       console.table(storedList);
   
