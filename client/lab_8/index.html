@@ -4,7 +4,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Farhana's Labs for INST377</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+
     <link rel="stylesheet" href="style.css" />
+
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+    rossorigin=""></script>
+
   </head>
   <body>
     <div class="wrapper">
@@ -19,11 +30,10 @@
           <form class="box main_form">
           <button type="button" id="data_load">Load County Data</button>
           <div>
-            <label for="resto"> Restaurant Name</label>
+            <label for="resto"> Filter By Restaurant Name</label>
             <input type="text" name="resto" id="resto">
           </div>
           <div class="buttons">
-            <button type="button" id="filter">Filter Data</button>
             <button type="button" id="generate">Generate List</button>
           </div>
         </form>
@@ -33,6 +43,7 @@
             <!-- left side -->
             <!-- images box -->
           <h2>Local Restaurants list</h2>
+          <div id="map" class="box"></div>
           <ol class="box" id="restaurant_list">
             <!-- description box -->
             A list of local restaurants

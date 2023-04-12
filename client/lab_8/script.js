@@ -35,9 +35,16 @@ function getRandomIntInclusive(min, max){
     })
   }
   
+  function initMap(){
+    const carto = L.map('map').setView([51.505, -0.09], 13);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+  }
+
   async function mainEvent() { 
     const mainform = document.querySelector('.main_form'); 
-    const filterDataButton = document.querySelector('#filter');
     const loadDataButton = document.querySelector('#data_load');
     const generateListButton = document.querySelector('#generate');
     const textField = document.querySelector('#resto');
@@ -46,6 +53,14 @@ function getRandomIntInclusive(min, max){
     const loadAnimation = document.querySelector('#data_load_animation');
     loadAnimation.style.display = 'none';
     generateListButton.classList.add('hidden');
+
+    initMap();
+
+    const storedData = localStorage.getItem('storedData');
+    const parseData = JSON.parse(storedData);
+    if (parseData.length > 0){
+        generateListButton.classList.remove('hidden');
+    }
 
     let currentList = [];
   
@@ -57,33 +72,15 @@ function getRandomIntInclusive(min, max){
       const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
       const storedList = await results.json();
       localStorage.setItem('storedData',JSON.stringify(storedList));
-
-      if (storedList.length > 0){
-        generateListButton.classList.remove('hidden');
-     }
      
       loadAnimation.style.display = 'none';
-      console.table(storedList);
+      // console.table(storedList);
   
-    });
-  
-    filterDataButton.addEventListener('click',(event) => {
-      console.log('clicked FilterButton');
-  
-      const formData = new FormData(mainform);
-      const formProps = Object.fromEntries(formData);
-  
-      console.log(formProps);
-  
-      const newList = filterList(currentList,formProps.resto);
-      console.log(newList);
-      injectHTML(newList);
     });
   
     generateListButton.addEventListener('click', (event) => {
       console.log('generate new list');
-      const recalList = localStorage.getItem('storedData');
-      currentList = cutRestaurantList(recalList);
+      currentList = cutRestaurantList(parseData);
       console.log(currentList);
       injectHTML(currentList);
     })
