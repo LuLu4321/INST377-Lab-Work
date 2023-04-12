@@ -47,7 +47,6 @@ function getRandomIntInclusive(min, max){
     loadAnimation.style.display = 'none';
     generateListButton.classList.add('hidden');
 
-    let storedList = [];
     let currentList = [];
   
     loadDataButton.addEventListener('click', async (submitEvent) => { 
@@ -56,8 +55,9 @@ function getRandomIntInclusive(min, max){
       console.log('Loading Data'); 
       loadAnimation.style.display = 'inline-block';
       const results = await fetch('https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json');
-      storedList = await results.json();
-      
+      const storedList = await results.json();
+      localStorage.setItem('storedData',JSON.stringify(storedList));
+
       if (storedList.length > 0){
         generateListButton.classList.remove('hidden');
      }
@@ -82,7 +82,8 @@ function getRandomIntInclusive(min, max){
   
     generateListButton.addEventListener('click', (event) => {
       console.log('generate new list');
-      currentList = cutRestaurantList(storedList);
+      const recalList = localStorage.getItem('storedData');
+      currentList = cutRestaurantList(recalList);
       console.log(currentList);
       injectHTML(currentList);
     })
